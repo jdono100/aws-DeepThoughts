@@ -3,8 +3,7 @@ const router = express.Router();
 const AWS = require("aws-sdk");
 
 const awsConfig = {
-  region: "us-east-2",
-  endpoint: "http://localhost:8000",
+  region: "us-east-2"
 };
 AWS.config.update(awsConfig);
 
@@ -38,7 +37,7 @@ router.get('/users/:username', (req, res) => {
     ExpressionAttributeValues: {
       ":user": req.params.username
     },
-    ProjectionExpression: "#th, #ca",
+    ProjectionExpression: "#th, #ca, #un",
     ScanIndexForward: false
   };
 
